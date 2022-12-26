@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_product_check" inherit_id="website_sale.filter_products_price">
+        <xpath expr="//div[@id='o_wsale_price_range_option']" position="after">
+            <div id="o_wsale_product_check_option"
+                 t-attf-class="product_check">
+                <label t-attf-class="m-0 h6 o_products_attributes_title {{_classes_title}}">
+                    <b>Product</b>
+                </label>
+                <select name="product" t-attf-class="form-control s_website_form_input" id="product_check">
+                    <t t-foreach="products or []" t-as="product">
+                        <option t-att-value="product.qty_available">
+                            <t t-esc="product.name"/>
+                        </option>
+                    </t>
+                </select>
+                <br/>
+                <div id="available"><p>Available Quantity: <span id="qty_available"/></p></div>
+                <div id="not_available"><p>Out Of Stock</p></div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
